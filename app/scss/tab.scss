@@ -1,0 +1,106 @@
+.tabs-wrapper
+{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    & input
+    {
+        position: absolute;
+        left: -9999px;
+    }
+    & label
+    {
+        display: flex;
+        flex-direction: column;
+        width: 20px;
+        height: 20px;
+        margin: 20px 0;
+        background-color: #EEEEEE;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+}
+.tabs
+{
+    display: flex;
+
+    width: 90%;
+    flex-grow: 2;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.tabs .tab
+{
+    display: none;
+
+    width: 100%;
+    letter-spacing: .1rem;
+
+    opacity: 0;
+    color: #1a2631;
+
+    justify-content: space-between;
+    & .image, & .text, & header {
+        opacity: 0;
+    }
+}
+.tabs-wrapper #i-1:checked ~ #l-1,
+.tabs-wrapper #i-2:checked ~ #l-2,
+.tabs-wrapper #i-3:checked ~ #l-3,
+{
+    background-color: $blue;
+}
+.tabs .tab.active {
+    position: relative;
+    opacity: 1;
+    display: flex;
+    & .image {
+        position: relative;
+        animation: image 1s linear;
+        animation-fill-mode: forwards;
+    }
+    & .text {
+        position: relative;
+        animation: 1s text 1s linear;
+        animation-fill-mode: forwards;
+    }
+    & header {
+        position: relative;
+        animation: .5s header 1s linear;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes image {
+    from {
+        top: -100%;
+        left: -100%;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+@keyframes text {
+    from {
+        top: -900px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+@keyframes header {
+    from {
+        right: -100%;
+        opacity: 0;
+    }
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
